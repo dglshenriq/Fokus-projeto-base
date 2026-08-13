@@ -89,20 +89,25 @@ startPauseBt.addEventListener('click', iniciarOuPausar);
 function iniciarOuPausar() {   
     
     if (intervaloId) {
-        audioPause.play();
-        iniciarOuPausarBt.textContent = 'Continuar';
         pausar();
         return;
     }
     intervaloId = setInterval(contagemRegressiva, 1000);
-    audioPlay.play();
-    iniciarOuPausarBt.textContent = 'Pausar';
-    imagemBt.setAttribute('src', './imagens/pause.png');
+    tocar();
 }
 
 function pausar(){
     clearInterval(intervaloId);
     intervaloId = null;
+    audioPause.play();
+    iniciarOuPausarBt.textContent = 'Continuar';
+    imagemBt.setAttribute('src', './imagens/play_arrow.png');
+}
+
+function tocar() {
+    audioPlay.play();
+    iniciarOuPausarBt.textContent = 'Pausar';
+    imagemBt.setAttribute('src', './imagens/pause.png');
 }
 
 function zerar(){
@@ -110,8 +115,6 @@ function zerar(){
     intervaloId = null;
     tempoDecorridoEmSegundos = tempoInicialEmSegundos;
     mostrarTempo();
-    iniciarOuPausarBt.textContent = 'Começar';
-    imagemBt.setAttribute('src', './imagens/play_arrow.png');
 }
 
 function mostrarTempo(){
