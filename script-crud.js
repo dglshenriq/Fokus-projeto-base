@@ -48,6 +48,13 @@ bntAdicionarTarefa.addEventListener('click', () =>{
     formAdicionarTarefa.classList.toggle('hidden')
 })
 
+const btnCancelar = document.querySelector('.app__form-footer__button--cancel');
+const limparFormulario = () => {
+    textArea.value = '';  
+    formAdicionarTarefa.classList.add('hidden');  
+}
+btnCancelar.addEventListener('click', limparFormulario);
+
 formAdicionarTarefa.addEventListener('submit', (evento) => {
     evento.preventDefault();
     const tarefa = {
