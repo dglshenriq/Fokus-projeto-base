@@ -2,7 +2,10 @@ const bntAdicionarTarefa = document.querySelector('.app__button--add-task')
 const formAdicionarTarefa = document.querySelector('.app__form-add-task')
 const textArea = document.querySelector('.app__form-textarea')
 const ulTarefas = document.querySelector('.app__section-task-list')
+const paragrafoDescricaoTarefas = document.querySelector('.app__section-active-task-description')
+
 const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
+let tarefaSelecionada = null
 
 function atualizarTarefas(){
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
@@ -43,6 +46,21 @@ li.append(svg)
 li.append(paragrafo)
 li.append(botao)
 
+li.onclick = () => {
+     document.querySelectorAll('.app__section-task-list-item').forEach(elemento => {
+        elemento.classList.remove('app__section-task-list-item-active')
+    })
+    
+    if (tarefaSelecionada === tarefa) {
+        paragrafoDescricaoTarefas.textContent = ''
+        tarefaSelecionada = null
+        return
+    }
+    tarefaSelecionada = tarefa
+    paragrafoDescricaoTarefas.textContent = tarefa.descricao
+   
+    li.classList.add('app__section-task-list-item-active')
+}
 return li}
 bntAdicionarTarefa.addEventListener('click', () =>{
     formAdicionarTarefa.classList.toggle('hidden')
