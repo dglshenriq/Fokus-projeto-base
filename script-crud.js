@@ -47,7 +47,11 @@ li.append(svg)
 li.append(paragrafo)
 li.append(botao)
 
-li.onclick = () => {
+if (tarefa.completa) {
+    li.classList.add('app__section-task-list-item-complete')
+    botao.setAttribute('disabled', 'disabled')
+} else {
+    li.onclick = () => {
      document.querySelectorAll('.app__section-task-list-item').forEach(elemento => {
         elemento.classList.remove('app__section-task-list-item-active')
     })
@@ -63,6 +67,7 @@ li.onclick = () => {
     paragrafoDescricaoTarefas.textContent = tarefa.descricao
    
     li.classList.add('app__section-task-list-item-active')
+    }
 }
 return li}
 bntAdicionarTarefa.addEventListener('click', () =>{
@@ -99,5 +104,7 @@ document.addEventListener('FocoFinalizado', () => {
         liTarefaSelecionada.classList.remove('app__section-task-list-item-active')
         liTarefaSelecionada.classList.add('app__section-task-list-item-complete')
         liTarefaSelecionada.querySelector('button').setAttribute('disabled', 'disabled')
+        tarefaSelecionada.completa = true
+        atualizarTarefas()
     }
 }) 
