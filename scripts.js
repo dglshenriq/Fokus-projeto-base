@@ -16,7 +16,7 @@ const audioPlay = new Audio('./sons/play.wav');
 const audioPause = new Audio('./sons/pause.mp3');
 const audioZerar = new Audio('./sons/beep.mp3');
 
-let tempoInicialEmSegundos = 10;
+let tempoInicialEmSegundos = 1500;
 let tempoDecorridoEmSegundos = tempoInicialEmSegundos;
 let intervaloId = null;
 
@@ -56,19 +56,19 @@ function alteraContexto(contexto) {
 }
 
 focoBt.addEventListener('click', () => {
-    tempoDecorridoEmSegundos = 10;
+    tempoDecorridoEmSegundos = 1500;
     alteraContexto('foco');
     focoBt.classList.add('active');
 })
 
 curtoBt.addEventListener('click', () => {
-    tempoDecorridoEmSegundos = 10;
+    tempoDecorridoEmSegundos = 300;
     alteraContexto('descanso-curto');
     curtoBt.classList.add('active');
 })
 
 longoBt.addEventListener('click', () => {
-    tempoDecorridoEmSegundos = 10;
+    tempoDecorridoEmSegundos = 900;
     alteraContexto('descanso-longo');
     longoBt.classList.add('active');
 });
